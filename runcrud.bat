@@ -22,7 +22,6 @@ goto fail
 
 :runtomcat
 call %CATALINA_HOME%\bin\startup.bat
-
 goto end
 
 :fail

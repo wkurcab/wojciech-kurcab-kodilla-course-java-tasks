@@ -3,7 +3,6 @@ plugins {
 	id 'java'
 }
 
-apply plugin: 'idea'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'war'
 
