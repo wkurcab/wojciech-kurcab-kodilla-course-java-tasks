@@ -1,8 +1,11 @@
 package com.crud.tasks.controller;
 
 import com.crud.tasks.domain.TrelloBoardDto;
+import com.crud.tasks.domain.TrelloCardDto;
+import com.crud.tasks.mapper.CreatedTrelloCard;
 import com.crud.tasks.trello.client.TrelloClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,14 +21,19 @@ public class TrelloController {
     private TrelloClient trelloClient;
 
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
-    public void getTrelloBoards() {
+    public void getTrelloBoards() throws TrelloNotFoundException {
 //        return trelloClient.getTrelloBoards();
         List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
 
         trelloBoards.stream()
                 .filter(isEmpty -> isEmpty.getId().length() > 0 & isEmpty.getName().length() > 0)
                 .filter(f -> f.getName().contains("Kodilla"))
-                .forEach(trelloBoardDto -> System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()));
+                .forEach(trelloBoardDto -> {
+                    System.out.println(trelloBoardDto.getId() + " - " + trelloBoardDto.getName());
+                    System.out.println("This board contains lists: ");
+                    trelloBoardDto.getLists().forEach(trelloList ->
+                            System.out.println(trelloList.getName() + " - " + trelloList.getId() + " - " + trelloList.isClosed()));
+                });
 
 //        trelloBoards.forEach(trelloBoardDto -> {
 //            System.out.println(trelloBoardDto.getName() + " - " + trelloBoardDto.getId());
@@ -37,8 +45,8 @@ public class TrelloController {
 //        });
     }
 
-//    @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard")
-//    public CreatedTrelloCard createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
-//        return trelloClient.createNewCard(trelloCardDto);
-//    }
+    @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard")
+    public CreatedTrelloCard createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
+        return trelloClient.createNewCard(trelloCardDto);
+    }
 }
