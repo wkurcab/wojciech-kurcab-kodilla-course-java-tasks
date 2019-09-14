@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -16,6 +18,6 @@ public class BadgesDto {
     private String votes;
 
     @JsonProperty("attachments")
-    private AttachmentsByType attachments;
+    private List<AttachmentsByTypeDto> attachmentsByType;
 
 }

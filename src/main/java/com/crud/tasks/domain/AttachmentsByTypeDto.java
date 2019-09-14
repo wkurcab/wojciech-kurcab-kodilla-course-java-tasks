@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -13,5 +15,5 @@ import lombok.NoArgsConstructor;
 public class AttachmentsByTypeDto {
 
     @JsonProperty("trello")
-    private Trello trello;
+    private List<TrelloDto> trello;
 }
