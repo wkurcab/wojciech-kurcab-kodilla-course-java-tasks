@@ -22,7 +22,7 @@ public class SimpleEmailService {
         try {
             javaMailSender.send(createMailMessage(mail));
             LOGGER.info("Email has been sent.");
-            if (mail.getToCc() != "") {
+            if (mail.getToCc() != "" && mail.getToCc() != null) {
                 LOGGER.info("CC to...");
             }
         } catch (MailException e) {
@@ -35,7 +35,7 @@ public class SimpleEmailService {
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
-        if (mail.getToCc() != "") {
+        if (mail.getToCc() != "" && mail.getToCc() != null) {
             mailMessage.setCc(mail.getToCc());
         }
         return mailMessage;
