@@ -21,10 +21,10 @@ public class SimpleEmailService {
         LOGGER.info("Starting email preparation...");
         try {
             javaMailSender.send(createMailMessage(mail));
-            LOGGER.info("Email has been sent.");
             if (mail.getToCc() != "" && mail.getToCc() != null) {
                 LOGGER.info("CC to...");
             }
+            LOGGER.info("Email has been sent.");
         } catch (MailException e) {
             LOGGER.error("Failed to precess email sending: ", e.getMessage(), e);
         }
