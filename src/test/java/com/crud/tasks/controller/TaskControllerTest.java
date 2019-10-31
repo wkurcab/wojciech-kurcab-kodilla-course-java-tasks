@@ -142,8 +142,5 @@ public class TaskControllerTest {
                 .characterEncoding("UTF-8")
                 .content(jsonContent))
                 .andExpect(status().isOk());
-//                .andExpect(jsonPath("$.id", is(1)))
-//                .andExpect(jsonPath("$.title", is("Test Task")))
-//                .andExpect(jsonPath("$.content", is("Content Task")));
     }
 }
