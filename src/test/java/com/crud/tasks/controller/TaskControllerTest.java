@@ -1,5 +1,6 @@
 package com.crud.tasks.controller;
 
+import com.crud.tasks.domain.Task;
 import com.crud.tasks.domain.TaskDto;
 import com.crud.tasks.mapper.TaskMapper;
 import com.crud.tasks.service.DbService;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static java.util.Optional.ofNullable;
 import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -73,15 +75,15 @@ public class TaskControllerTest {
     public void shouldTask() throws Exception {
         //Given
         TaskDto taskDto = new TaskDto(1L, "Test Task", "Content Task");
+        Optional<Task> optionalTask = Optional.ofNullable(new Task(1L, "Test task", "Content"));
 
-        when(taskMapper.mapToTaskDto(any())).thenReturn(taskDto);
-
+        when(taskMapper.mapToTaskDto(ArgumentMatchers.any())).thenReturn(taskDto);
+        when(service.getTaskById(anyLong())).thenReturn(optionalTask);
         //When & then
-        mockMvc.perform(get("/v1/task/getTask?taskId=1L")
+        mockMvc.perform(get("/v1/task/getTask?taskId=1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.title", is("Test Task")))
                 .andExpect(jsonPath("$.content", is("Content Task")));
