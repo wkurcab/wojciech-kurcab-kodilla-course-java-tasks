@@ -43,7 +43,7 @@ public class TrelloFacadeTestSuite {
         trelloLists.add(new TrelloListDto("1", "test_list", false));
 
         List<TrelloBoardDto> trelloBoards = new ArrayList<>();
-        trelloBoards.add(new TrelloBoardDto("test", "1", trelloLists));
+        trelloBoards.add(new TrelloBoardDto("1", "test", trelloLists));
 
         List<TrelloList> mappedTrelloLists = new ArrayList<>();
         mappedTrelloLists.add(new TrelloList("1", "test_list", false));
@@ -71,7 +71,7 @@ public class TrelloFacadeTestSuite {
         trelloLists.add(new TrelloListDto("1", "my_list", false));
 
         List<TrelloBoardDto> trelloBoards = new ArrayList<>();
-        trelloBoards.add(new TrelloBoardDto("my_task", "1", trelloLists));
+        trelloBoards.add(new TrelloBoardDto("1", "my_task", trelloLists));
 
         List<TrelloList> mappedTrelloLists = new ArrayList<>();
         mappedTrelloLists.add(new TrelloList("1", "my_list", false));

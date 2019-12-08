@@ -35,12 +35,12 @@ public class TrelloMapperTestSuite {
         listDto3.add(new TrelloListDto("1", "List 3.1", true));
         listDto4.add(new TrelloListDto("1", "List 4.1", true));
 
-        trelloBoardDto.add(new TrelloBoardDto("Task 1", "1", listDto1));
-        trelloBoardDto.add(new TrelloBoardDto("Task 2", "2", listDto1));
-        trelloBoardDto.add(new TrelloBoardDto("Task 3", "3", listDto1));
-        trelloBoardDto.add(new TrelloBoardDto("Task 4", "4", listDto2));
-        trelloBoardDto.add(new TrelloBoardDto("Task 5", "5", listDto3));
-        trelloBoardDto.add(new TrelloBoardDto("Task 6", "6", listDto4));
+        trelloBoardDto.add(new TrelloBoardDto("1","Task 1",  listDto1));
+        trelloBoardDto.add(new TrelloBoardDto("2","Task 2",  listDto1));
+        trelloBoardDto.add(new TrelloBoardDto("3","Task 3",  listDto1));
+        trelloBoardDto.add(new TrelloBoardDto("4", "Task 4", listDto2));
+        trelloBoardDto.add(new TrelloBoardDto("5","Task 5",  listDto3));
+        trelloBoardDto.add(new TrelloBoardDto("6","Task 6",  listDto4));
 
         //When
         List<TrelloBoard> boards = trelloMapper.mapToBoards(trelloBoardDto);
@@ -68,12 +68,12 @@ public class TrelloMapperTestSuite {
         trelloLists3.add(new TrelloList("1", "List 3.1", true));
         trelloLists4.add(new TrelloList("1", "List 4.1", true));
 
-        trelloBoards.add(new TrelloBoard("Task 1", "1", trelloLists1));
-        trelloBoards.add(new TrelloBoard("Task 2", "2", trelloLists1));
-        trelloBoards.add(new TrelloBoard("Task 3", "3", trelloLists1));
-        trelloBoards.add(new TrelloBoard("Task 4", "4", trelloLists2));
-        trelloBoards.add(new TrelloBoard("Task 5", "5", trelloLists3));
-        trelloBoards.add(new TrelloBoard("Task 6", "6", trelloLists4));
+        trelloBoards.add(new TrelloBoard("1", "Task 1", trelloLists1));
+        trelloBoards.add(new TrelloBoard("2", "Task 2", trelloLists1));
+        trelloBoards.add(new TrelloBoard("3", "Task 3", trelloLists1));
+        trelloBoards.add(new TrelloBoard("4", "Task 4", trelloLists2));
+        trelloBoards.add(new TrelloBoard("5", "Task 5", trelloLists3));
+        trelloBoards.add(new TrelloBoard("6", "Task 6", trelloLists4));
 
         //When
         List<TrelloBoardDto> boardsDto = trelloMapper.mapToBoardsDto(trelloBoards);
